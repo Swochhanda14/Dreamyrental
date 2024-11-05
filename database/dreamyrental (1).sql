@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2024 at 02:30 PM
+-- Generation Time: Nov 05, 2024 at 05:37 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -69,29 +69,6 @@ INSERT INTO `adminlogin` (`id`, `username`, `email`, `password`, `cpassword`, `c
 -- --------------------------------------------------------
 
 --
--- Table structure for table `booking`
---
-
-CREATE TABLE `booking` (
-  `id` int(11) NOT NULL,
-  `pname` varchar(100) NOT NULL,
-  `pprice` varchar(100) NOT NULL,
-  `paddress` varchar(100) NOT NULL,
-  `depositeamt` varchar(100) NOT NULL,
-  `bookingdate` varchar(100) NOT NULL,
-  `user_email` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `booking`
---
-
-INSERT INTO `booking` (`id`, `pname`, `pprice`, `paddress`, `depositeamt`, `bookingdate`, `user_email`) VALUES
-(1, 'Valley Top villa', '100000', 'Nagarkot', '30000', '2024-10-07', 'swochhanda@gmail.com');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `contact`
 --
 
@@ -108,15 +85,7 @@ CREATE TABLE `contact` (
 --
 
 INSERT INTO `contact` (`id`, `name`, `email`, `contact`, `message`) VALUES
-(1, 'swochhanda', 'swochhanda14@gmail.com', '9863422162', 'hello dear, how are you doing.'),
-(2, 'luniva', 'luniva14@gmail.com', '9876543210', 'hello sir'),
-(3, 'sudha', 'sudha14@gmail.com', '9876543321', 'I am sudha karki.'),
-(4, 'Bikash manandhar', 'bikash@gmail.com', '9860335583', 'Lets play game'),
-(5, 'Sanam', 'sanamshrestha@gmail.com', '999999999', 'K gardai xau '),
-(7, 'Aayushma', 'aayushmakc@gmail.com', '987777770', 'I am at work.'),
-(8, 'ram', 'ram@gmail.com', '98786545', 'Hello dear'),
-(9, 'Hari', 'hari@gmail.com', '9876543210', 'I want to rent a room for 1 week.'),
-(10, 'surya', 'surya@gmail.com', '656565', 'dsfgdfdf');
+(1, 'sudha karki', 'sudha@gmail.com', '9876543210', 'Hello');
 
 -- --------------------------------------------------------
 
@@ -138,10 +107,7 @@ CREATE TABLE `feedback` (
 --
 
 INSERT INTO `feedback` (`id`, `name`, `feedback`, `bimage`, `rating`, `profile`) VALUES
-(1, 'luniva karanjeet', 'Best platform for room renting', 'property-3.jpg', 5, 'luniva.jpg'),
-(2, 'Swochhanda karanjeet', 'Very good! but it need some improvement', 'property-1.jpg', 4, '272989961_480783170088144_2871726468886977893_n.jpg'),
-(3, 'sagar', 'Very nice I like it', 'property-3.jpg', 5, 'profile for youtube.jpg'),
-(4, 'surya', 'good', 'hall-img-4.webp', 4, '272989961_480783170088144_2871726468886977893_n.jpg');
+(1, 'Swochhanda karanjeet', 'best website', 'hall-img-3.webp', 5, 'pic-3.png');
 
 -- --------------------------------------------------------
 
@@ -154,18 +120,6 @@ CREATE TABLE `location` (
   `city` varchar(100) NOT NULL,
   `state` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `location`
---
-
-INSERT INTO `location` (`id`, `city`, `state`) VALUES
-(1, 'kathmandu', 'bagmati_province'),
-(2, 'Sindhuli', 'bagmati_province'),
-(3, 'Bhaktapur', 'bagmati_province'),
-(4, 'Lalitpur', 'bagmati_province'),
-(5, 'shankharapur', 'bagmati_province'),
-(7, 'Chabahil', 'bagmati_province');
 
 -- --------------------------------------------------------
 
@@ -196,6 +150,11 @@ CREATE TABLE `property` (
   `loan` varchar(100) NOT NULL,
   `description` varchar(1000) NOT NULL,
   `extra` varchar(100) NOT NULL,
+  `booking` varchar(100) NOT NULL,
+  `bookingdate` varchar(100) NOT NULL,
+  `isread` tinyint(20) NOT NULL,
+  `cancel` tinyint(20) NOT NULL,
+  `user_email` varchar(100) NOT NULL,
   `img1` varchar(400) NOT NULL,
   `img2` varchar(400) NOT NULL,
   `img3` varchar(400) NOT NULL,
@@ -208,13 +167,10 @@ CREATE TABLE `property` (
 -- Dumping data for table `property`
 --
 
-INSERT INTO `property` (`id`, `pname`, `pprice`, `depositeamt`, `paddress`, `offertype`, `propertytype`, `status`, `furnishedstatus`, `BHK`, `bedroom`, `bathroom`, `balcony`, `kitchen`, `hall`, `area`, `age`, `totalfloor`, `floorroom`, `loan`, `description`, `extra`, `img1`, `img2`, `img3`, `img4`, `img5`, `Bdate`) VALUES
-(1, 'Shankharapur top villa', '10000', '$$2000', 'Shankharapur ', 'rent', 'house', 'ready to move', 'furnished', '1', '4', '2', '1', '1', '1', '1430', '2y', '4', '2', 'available', 'Best place to visit with you friends and family.', 'water_supply,power_backup,parking_area,gym', 'property-1.jpg', 'property-1.jpg', 'hall-img-3.webp', 'bathroom-img-4.jpg', 'bathroom-img-6.jpg', '2024-10-07'),
-(2, 'Valley Top villa', '100000', '$$30000', 'Nagarkot', 'sale', 'flat', 'ready to move', 'furnished', '1', '2', '1', '1', '1', '1', '1350', '2y', '2', '1', 'available', 'best 1 night stay villa', 'water_supply,power_backup,parking_area', 'house-img-1.webp', 'house-img-1.webp', 'bathroom-img-3.webp', 'hall-img-5.webp', 'hall-img-6.webp', '2024-10-07'),
-(3, 'Pacific Panorama', '100000', '$10000', 'Nuwakot', 'rent', 'shop', 'ready to move', 'furnished', '2', '4', '2', '2', '1', '1', '2000', '2', '4', '3', 'available', 'best affordable villa', 'play_ground,garden,water_supply,power_backup,parking_area,market_area', 'property-2.jpg', 'property-2.jpg', 'hall-img-3.webp', 'hall-img-6.webp', 'hall-img-4.webp', '2024-10-07'),
-(4, 'Hamro Ghar', '15000', '2000', 'Shankharapur ', 'rent', 'house', 'ready to move', 'semi-furnished', '1', '3', '1', '1', '1', '1', '1875', '2', '2', '2', 'available', 'you can enjoy your home stay with your family and friends.', 'play_ground,garden,water_supply,power_backup,parking_area', 'property-3.jpg', 'bathroom-img-1.webp', 'hall-img-4.webp', 'hall-img-2.webp', 'hall-img-6.webp', '2024-10-09'),
-(5, 'Rose Cottage', '200000', '10000', 'Bhaktapur', 'sale', 'house', 'ready to move', 'furnished', '2', '4', '2', '2', '1', '1', '2500', '10', '4', '3', 'available', 'Affordable price home.', 'play_ground,garden,water_supply,power_backup,parking_area', 'house-img-2.webp', 'hall-img-6.webp', 'hall-img-5.webp', 'bathroom-img-2.webp', 'bathroom-img-4.jpg', '2024-10-10'),
-(6, 'River side villa', '200000', '10000', 'Pokhara', 'sale', 'house', 'ready to move', 'semi-furnished', '2', '4', '2', '2', '1', '', '2500', '5y', '3', '2', 'not available', 'A riverside villa is an elegant, serene retreat typically located along the banks of a river, offering stunning views of the water and surrounding nature. The villa often features large windows or glass doors to maximize natural light and provide panoramic vistas. The exterior design might blend natural materials like wood, stone, or brick to harmonize with the environment, with spacious outdoor terraces or balconies ideal for relaxation or hosting gatherings.\r\n\r\n', 'security_guard,play_ground,garden,water_supply,power_backup,parking_area,gym', 'property-5.jpg', 'property-5.jpg', 'kitchen-img-3.webp', 'bathroom-img-3.webp', 'hall-img-6.webp', '2024-10-10');
+INSERT INTO `property` (`id`, `pname`, `pprice`, `depositeamt`, `paddress`, `offertype`, `propertytype`, `status`, `furnishedstatus`, `BHK`, `bedroom`, `bathroom`, `balcony`, `kitchen`, `hall`, `area`, `age`, `totalfloor`, `floorroom`, `loan`, `description`, `extra`, `booking`, `bookingdate`, `isread`, `cancel`, `user_email`, `img1`, `img2`, `img3`, `img4`, `img5`, `Bdate`) VALUES
+(1, 'Shankharapur top villa', '10000', '2000', 'Shankharapur, kathmandu', 'sale', 'house', 'ready to move', 'furnished', '2', '4', '2', '2', '1', '1', '2500', '2y', '4', '2', 'not available', 'Best affortable home', 'play_ground,garden,water_supply,power_backup,parking_area', '1', '2024-11-05 08:55:19', 0, 1, 'sudha@gmail.com', 'property-1.jpg', 'property-1.jpg', 'bathroom-img-3.webp', 'hall-img-2.webp', 'kitchen-img-6.webp', '2024-11-03'),
+(2, 'Valley Top villa', '4000', '400', 'Gokarna, Kathmandu', 'rent', 'house', 'ready to move', 'furnished', '1', '2', '1', '1', '1', '0', '1430', '10', '2', '2', 'not available', 'affortable room rent', 'play_ground,garden,water_supply,power_backup', '1', '2024-11-04 19:14:56', 0, 0, 'swochhanda@gmail.com', 'hall-img-2.webp', 'hall-img-2.webp', 'bathroom-img-1.webp', 'kitchen-img-1.webp', 'hall-img-4.webp', '2024-11-03'),
+(3, 'Hamro Ghar', '100000', '10000', 'Nagarkot, Bhaktapur', 'sale', 'house', 'ready to move', 'furnished', '2', '4', '3', '2', '2', '1', '2500', '10', '4', '3', 'not available', 'best home where you can also rent it for other.', 'play_ground,garden,water_supply,power_backup,parking_area,market_area', '1', '2024-11-05 08:57:20', 0, 1, 'sudha@gmail.com', 'property-5.jpg', 'property-5.jpg', 'bathroom-img-4.jpg', 'hall-img-2.webp', 'kitchen-img-1.webp', '2024-11-04');
 
 -- --------------------------------------------------------
 
@@ -239,9 +195,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `contact`, `password`, `cpassword`, `gender`, `dob`, `photo`) VALUES
-(1, 'swochhanda', 'swochhanda@gmail.com', '9863422162', '123456', '123456', 'male', '2003-09-12', 'avatar-4.jpg'),
-(2, 'Noname', 'swocxanda35@gmail.com', '9876543210', '12345', '12345', 'male', '2000-07-09', 'CamScanner 10-19-2022 14.09.jpg'),
-(3, 'luniva', 'luniva@gmail.com', '9860335583', '1234', '1234', 'female', '1997-02-20', 'luniva.jpg');
+(1, 'Swochhanda', 'swochhanda@gmail.com', '9863422162', '12345', '12345', 'male', '2003-09-12', 'pic-3.png'),
+(2, 'Sudha', 'sudha@gmail.com', '6613447', '12345', '12345', 'female', '2002-07-13', 'pic-2.png');
 
 --
 -- Indexes for dumped tables
@@ -257,12 +212,6 @@ ALTER TABLE `aboutcontent`
 -- Indexes for table `adminlogin`
 --
 ALTER TABLE `adminlogin`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `booking`
---
-ALTER TABLE `booking`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -312,40 +261,34 @@ ALTER TABLE `adminlogin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `booking`
---
-ALTER TABLE `booking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `location`
 --
 ALTER TABLE `location`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `property`
 --
 ALTER TABLE `property`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
